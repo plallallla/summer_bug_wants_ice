@@ -9,6 +9,7 @@ date: 2025-09-13
 #### 1. Phong模型中的光照
 
 Phong模型认为物体的颜色由三个部分决定，即物体的镜面反射光、漫反射光与环境光。
+
 $$
 I = I_a + I_d + I_s = I_e K_a + I_p K_d (L \cdot N) + I_p K_s (R \cdot V)^n
 $$
