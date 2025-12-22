@@ -1,3 +1,3 @@
 - [首页](README)
-- [C++技术](cpp_index)
+- [C++ 技术](cpp_index)
 - [图形学技术](cg_index)
