@@ -8,3 +8,4 @@
 ## [Lambert着色模型与余弦加权采样](posts/Lambert着色模型与余弦加权采样.html)
 ## [光栅化程序的渲染管线](posts/光栅化程序的渲染管线.html)
 ## [光栅化三角形设置时的属性数据平面方程](posts/光栅化三角形设置时的属性数据平面方程.html)
+## [AlchemyAO](posts/AlchemyAO.html)
