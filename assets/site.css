@@ -1,0 +1,160 @@
+/* Keep Docsify's default visual style; only turn the sidebar into a top bar. */
+.sidebar {
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  border-right: 0;
+  display: flex;
+  gap: 24px;
+  height: 72px;
+  left: 0;
+  overflow: visible;
+  padding: 0 32px;
+  right: 0;
+  top: 0;
+  transform: none !important;
+  width: 100%;
+  z-index: 20;
+}
+
+body.close .sidebar {
+  transform: none !important;
+}
+
+.sidebar > h1 {
+  flex: 0 0 auto;
+  margin: 0;
+  order: 1;
+  padding: 0;
+  text-align: left;
+}
+
+.sidebar-nav {
+  flex: 1 1 auto;
+  height: 100%;
+  min-width: 0;
+  order: 2;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.sidebar-nav > ul {
+  align-items: center;
+  display: flex;
+  gap: 4px;
+  height: 72px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-nav > ul > li {
+  display: block;
+  flex: 0 0 auto;
+  list-style: none;
+  margin: 0;
+}
+
+.sidebar-nav > ul > li > a {
+  border-radius: 4px;
+  display: block;
+  line-height: 1.4;
+  padding: 8px 10px;
+}
+
+.sidebar-toggle {
+  display: none;
+}
+
+.content,
+body.close .content {
+  left: 0;
+}
+
+.content {
+  padding-top: 72px;
+}
+
+.article-toc {
+  border-left: 1px solid #eee;
+  bottom: 32px;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow: auto;
+  padding: 0 0 0 16px;
+  position: fixed;
+  right: 24px;
+  top: 104px;
+  width: 220px;
+}
+
+.article-toc-title {
+  color: #34495e;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.article-toc-link {
+  color: #7f8c8d;
+  display: block;
+  overflow: hidden;
+  padding: 4px 0;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.article-toc-link:hover {
+  color: var(--theme-color, #42b983);
+  text-decoration: none;
+}
+
+.article-toc-h3 {
+  padding-left: 12px;
+}
+
+.article-toc-h4,
+.article-toc-h5 {
+  padding-left: 24px;
+}
+
+body.has-article-toc .markdown-section {
+  margin-right: 280px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    height: auto;
+    min-height: 112px;
+    padding: 12px 16px;
+  }
+
+  .sidebar > h1 {
+    flex: 1 1 auto;
+  }
+
+  .sidebar-nav {
+    flex: 1 1 100%;
+    height: auto;
+    order: 3;
+  }
+
+  .sidebar-nav > ul {
+    height: auto;
+  }
+
+  .content {
+    padding-top: 112px;
+  }
+
+  .article-toc {
+    display: none;
+  }
+
+  body.has-article-toc .markdown-section {
+    margin-right: auto;
+  }
+}

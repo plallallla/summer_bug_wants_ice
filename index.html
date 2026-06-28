@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
   <meta charset="utf-8">
@@ -9,9 +9,11 @@
   <!-- Replace with your own title and description. -->
   <title>夏虫妄语冰</title>
   <meta name="description" content="summer bug wants ice.">
+  <meta name="theme-color" content="#2b7a78">
 
   <!-- Default Theme (see https://docsify.js.org/#/themes) -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <link rel="stylesheet" href="assets/site.css">
 
 </head>
 
@@ -21,7 +23,9 @@
   <script>
     // Docsify Configuration (see https://docsify.js.org/#/configuration)
     window.$docsify = {
-      name: 'summer bug wants ice',
+      name: '夏虫妄语冰',
+      nameLink: '/',
+      repo: 'https://github.com/plallallla',
 
       // Sidebar Configuration
       auto2top: true,
@@ -30,22 +34,16 @@
       // Set subMaxLevel to 0 to remove automatic display of page table of contents (TOC) in Sidebar
       subMaxLevel: 1,
 
-      // Search Plugin Configuration
-      search: {
-        placeholder: 'Type to search',
-        noData: 'No matches found.',
-        // Headline depth, 1 - 6
-        depth: 2,
-      }
     };
   </script>
+
+  <script src="assets/article-toc.js"></script>
 
   <!-- Required -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
 
   <!-- Recommended -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js"></script>
 
 </body>
 </html>
