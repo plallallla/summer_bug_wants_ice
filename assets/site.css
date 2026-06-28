@@ -1,4 +1,8 @@
 /* Keep Docsify's default visual style; only turn the sidebar into a top bar. */
+:root {
+  --article-toc-width: 220px;
+}
+
 .sidebar {
   align-items: center;
   border-bottom: 1px solid #eee;
@@ -26,6 +30,12 @@ body.close .sidebar {
   order: 1;
   padding: 0;
   text-align: left;
+}
+
+.sidebar > h1 .app-name-text {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  font-weight: 300;
 }
 
 .sidebar-nav {
@@ -89,11 +99,40 @@ body.close .content {
   font-size: 16px;
   left: 24px;
   line-height: 1.6;
-  overflow: auto;
+  overflow: visible;
   padding: 0 16px 0 0;
   position: fixed;
   top: 104px;
-  width: 220px;
+  width: var(--article-toc-width);
+}
+
+.article-toc-list {
+  height: 100%;
+  overflow: auto;
+}
+
+.article-toc-resizer {
+  bottom: 0;
+  cursor: ew-resize;
+  position: absolute;
+  right: -7px;
+  top: 0;
+  width: 14px;
+}
+
+.article-toc-resizer::after {
+  background: transparent;
+  bottom: 0;
+  content: "";
+  position: absolute;
+  right: 6px;
+  top: 0;
+  width: 1px;
+}
+
+.article-toc-resizer:hover::after,
+body.is-resizing-toc .article-toc-resizer::after {
+  background: var(--theme-color, #42b983);
 }
 
 .article-toc-link {
@@ -121,7 +160,7 @@ body.close .content {
 }
 
 body.has-article-toc .markdown-section {
-  margin-left: 280px;
+  margin-left: calc(var(--article-toc-width) + 60px);
   margin-right: auto;
 }
 
