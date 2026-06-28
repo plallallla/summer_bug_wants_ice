@@ -45,18 +45,17 @@
     var toc = document.createElement("aside");
     toc.className = "article-toc";
 
-    var title = document.createElement("div");
-    title.className = "article-toc-title";
-    title.textContent = "章节";
-    toc.appendChild(title);
-
     var list = document.createElement("nav");
     list.className = "article-toc-list";
 
     headings.forEach(function (heading, index) {
       var link = document.createElement("a");
       link.className = "article-toc-link article-toc-" + heading.tagName.toLowerCase();
-      link.href = "#" + ensureId(heading, index);
+      link.href = "javascript:void(0)";
+      link.addEventListener("click", function () {
+        heading.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      ensureId(heading, index);
       link.textContent = textOf(heading);
       list.appendChild(link);
     });
@@ -74,4 +73,5 @@
 
   window.$docsify = window.$docsify || {};
   window.$docsify.plugins = [].concat(plugin, window.$docsify.plugins || []);
+  window.addEventListener("hashchange", removeToc);
 })();

@@ -1,6 +1,5 @@
-# 图形学技术
 
-> 记录我的图形学入门学习内容
+> Graphics
 
 ## [Bresenham算法的两种推导方式](posts/Bresenham算法的两种推导方式.html)
 ## [Phong与Blinn-Phong着色模型](posts/Phong与Blinn-Phong着色模型.html)
@@ -9,5 +8,5 @@
 ## [光栅化程序的渲染管线](posts/光栅化程序的渲染管线.html)
 ## [光栅化三角形设置时的属性数据平面方程](posts/光栅化三角形设置时的属性数据平面方程.html)
 ## [AlchemyAO](posts/AlchemyAO.html)
-## [AA](posts/AA.html)
+## [AA（Anti-Aliasing）抗锯齿方法概览](posts/AA.html)
 ## [基于物理的渲染着色模型](posts/基于物理的渲染着色模型.html)
