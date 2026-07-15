@@ -1,15 +1,73 @@
-/* Keep Docsify's default visual style; only turn the sidebar into a top bar. */
+/* ==========================================================================
+   夏虫妄语冰 — site theme
+   Swiss editorial, content-first. Ice-teal accent on cool neutrals.
+   Layout: docsify sidebar turned into a top bar; article TOC on the left.
+   ========================================================================== */
+
 :root {
   --article-toc-width: 220px;
+
+  /* Semantic color tokens (light) */
+  --c-accent: #0f766e;
+  --c-accent-strong: #115e59;
+  --c-accent-soft: rgba(15, 118, 110, 0.08);
+  --c-bg: #fafbfc;
+  --c-surface: #ffffff;
+  --c-fg: #1c2733;
+  --c-fg-muted: #5c6b7a;
+  --c-fg-faint: #8b98a5;
+  --c-border: #e3e8ed;
+  --c-border-strong: #cfd7de;
+  --c-code-bg: #f2f5f7;
+  --c-code-fg: #0f5c56;
+
+  /* Type & rhythm */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-mono: "JetBrains Mono", "Cascadia Code", Consolas, "Liberation Mono",
+    "PingFang SC", "Microsoft YaHei", monospace;
+  --topbar-height: 64px;
+  --radius: 8px;
+  --shadow-card: 0 1px 2px rgba(28, 39, 51, 0.05);
+  --shadow-card-hover: 0 6px 20px rgba(15, 118, 110, 0.12);
 }
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+
+body {
+  background: var(--c-bg);
+  color: var(--c-fg);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--c-accent);
+  color: #ffffff;
+}
+
+a {
+  transition: color 0.2s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Top bar (docsify .sidebar repurposed)
+   -------------------------------------------------------------------------- */
 
 .sidebar {
   align-items: center;
-  border-bottom: 1px solid #eee;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: var(--c-surface);
+  background: color-mix(in srgb, var(--c-surface) 88%, transparent);
+  border-bottom: 1px solid var(--c-border);
   border-right: 0;
+  bottom: auto;
+  color: var(--c-fg);
   display: flex;
   gap: 24px;
-  height: 72px;
+  height: var(--topbar-height);
   left: 0;
   overflow: visible;
   padding: 0 32px;
@@ -25,17 +83,35 @@ body.close .sidebar {
 }
 
 .sidebar > h1 {
+  border-bottom: 0 !important;
   flex: 0 0 auto;
   margin: 0;
   order: 1;
   padding: 0;
   text-align: left;
+  text-decoration: none !important;
 }
 
+/* !important guards against globals leaked by Typora-exported post styles */
 .sidebar > h1 .app-name-text {
-  color: #2c3e50;
-  font-size: 1.5rem;
-  font-weight: 300;
+  border-bottom: 0 !important;
+  color: var(--c-fg);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-decoration: none !important;
+}
+
+/* Accent tick before the site name */
+.sidebar > h1 .app-name-text::before {
+  background: var(--c-accent);
+  border-radius: 2px;
+  content: "";
+  display: inline-block;
+  height: 1.1em;
+  margin-right: 12px;
+  vertical-align: -0.2em;
+  width: 4px;
 }
 
 .sidebar-nav {
@@ -52,8 +128,8 @@ body.close .sidebar {
 .sidebar-nav > ul {
   align-items: center;
   display: flex;
-  gap: 4px;
-  height: 72px;
+  gap: 6px;
+  height: var(--topbar-height);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -67,15 +143,41 @@ body.close .sidebar {
 }
 
 .sidebar-nav > ul > li > a {
-  border-radius: 4px;
+  border-radius: 6px;
+  color: var(--c-fg-muted);
   display: block;
+  font-size: 0.9375rem;
+  font-weight: 500;
   line-height: 1.4;
-  padding: 8px 10px;
+  padding: 8px 14px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.sidebar-nav > ul > li > a:hover {
+  background: var(--c-accent-soft);
+  color: var(--c-accent);
+  text-decoration: none;
+}
+
+.sidebar-nav > ul > li.active > a,
+.sidebar-nav > ul > li > a.active {
+  background: var(--c-accent-soft);
+  border-bottom: 0;
+  color: var(--c-accent);
 }
 
 .sidebar-toggle {
   display: none;
 }
+
+/* GitHub corner recolor */
+.github-corner svg {
+  fill: var(--c-accent);
+}
+
+/* --------------------------------------------------------------------------
+   Content area
+   -------------------------------------------------------------------------- */
 
 .content,
 body.close .content {
@@ -83,26 +185,194 @@ body.close .content {
 }
 
 .content {
-  padding-top: 72px;
+  padding-top: var(--topbar-height);
 }
 
+.markdown-section {
+  color: var(--c-fg);
+  font-size: 16px;
+  line-height: 1.8;
+  padding: 48px 32px 64px;
+}
+
+.markdown-section h1,
 .markdown-section h2,
 .markdown-section h3,
 .markdown-section h4,
 .markdown-section h5 {
-  scroll-margin-top: 88px;
+  color: var(--c-fg);
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  scroll-margin-top: calc(var(--topbar-height) + 16px);
 }
 
+.markdown-section h1 {
+  font-size: 2rem;
+  margin: 0 0 1rem;
+}
+
+.markdown-section p {
+  color: var(--c-fg);
+}
+
+.markdown-section a {
+  color: var(--c-accent);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* Heading anchors must follow heading color, not link color */
+.markdown-section a.anchor,
+.markdown-section a.anchor:hover {
+  color: var(--c-fg);
+}
+
+.markdown-section a:hover {
+  color: var(--c-accent-strong);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Blockquote as an editorial kicker (used as section label on index pages) */
+.markdown-section blockquote {
+  border-left: 4px solid var(--c-accent);
+  background: var(--c-accent-soft);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--c-fg-muted);
+  margin: 1.5em 0;
+  padding: 0.75em 1.25em;
+}
+
+.markdown-section blockquote p {
+  color: var(--c-fg-muted);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Inline code */
+.markdown-section code {
+  background: var(--c-code-bg);
+  border-radius: 4px;
+  color: var(--c-code-fg);
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  padding: 0.15em 0.4em;
+}
+
+.markdown-section pre {
+  background: var(--c-code-bg);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+}
+
+.markdown-section pre > code {
+  background: var(--c-code-bg);
+  color: var(--c-fg);
+  font-family: var(--font-mono);
+}
+
+.markdown-section tr {
+  border-color: var(--c-border);
+}
+
+.markdown-section tr:nth-child(2n) {
+  background: var(--c-code-bg);
+}
+
+.markdown-section hr {
+  border-color: var(--c-border);
+}
+
+/* Embedded mini-game on the home page.
+   vue.css sets `.markdown-section iframe { width:1px; min-width:100% }`;
+   min-width must be reset or it overrides max-width. */
+.flappy-frame,
+.markdown-section .flappy-frame {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  display: block;
+  height: 500px;
+  margin: 8px 0 24px;
+  max-width: 360px;
+  min-width: 0;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Post index pages: turn "## [title](posts/…)" into cards
+   -------------------------------------------------------------------------- */
+
+.markdown-section h2:has(> a[href*="posts/"]) {
+  border: 0;
+  font-size: 1.0625rem;
+  font-weight: 550;
+  margin: 0 0 12px;
+  padding: 0;
+}
+
+.markdown-section h2 > a[href*="posts/"] {
+  align-items: center;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  color: var(--c-fg);
+  display: flex;
+  gap: 12px;
+  padding: 16px 20px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.2s ease, color 0.2s ease;
+}
+
+.markdown-section h2 > a[href*="posts/"]::after {
+  color: var(--c-fg-faint);
+  content: "→";
+  font-weight: 400;
+  margin-left: auto;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.markdown-section h2 > a[href*="posts/"]:hover {
+  border-color: var(--c-accent);
+  box-shadow: var(--shadow-card-hover);
+  color: var(--c-accent);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.markdown-section h2 > a[href*="posts/"]:hover::after {
+  color: var(--c-accent);
+  transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .markdown-section h2 > a[href*="posts/"],
+  .markdown-section h2 > a[href*="posts/"]::after {
+    transition: none;
+  }
+
+  .markdown-section h2 > a[href*="posts/"]:hover {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Article TOC (left rail, injected by article-toc.js)
+   -------------------------------------------------------------------------- */
+
 .article-toc {
-  border-right: 1px solid #eee;
+  border-right: 1px solid var(--c-border);
   bottom: 32px;
-  font-size: 16px;
+  font-size: 14px;
   left: 24px;
   line-height: 1.6;
   overflow: visible;
   padding: 0 16px 0 0;
   position: fixed;
-  top: 104px;
+  top: calc(var(--topbar-height) + 32px);
   width: var(--article-toc-width);
 }
 
@@ -132,31 +402,35 @@ body.close .content {
 
 .article-toc-resizer:hover::after,
 body.is-resizing-toc .article-toc-resizer::after {
-  background: var(--theme-color, #42b983);
+  background: var(--c-accent);
 }
 
 .article-toc-link {
-  color: #7f8c8d;
+  border-left: 2px solid transparent;
+  color: var(--c-fg-muted);
   display: block;
+  margin-left: -1px;
   overflow: hidden;
-  padding: 4px 0;
+  padding: 4px 0 4px 10px;
   text-decoration: none;
   text-overflow: ellipsis;
+  transition: color 0.15s ease, border-color 0.15s ease;
   white-space: nowrap;
 }
 
 .article-toc-link:hover {
-  color: var(--theme-color, #42b983);
+  border-left-color: var(--c-accent);
+  color: var(--c-accent);
   text-decoration: none;
 }
 
 .article-toc-h3 {
-  padding-left: 12px;
+  padding-left: 22px;
 }
 
 .article-toc-h4,
 .article-toc-h5 {
-  padding-left: 24px;
+  padding-left: 34px;
 }
 
 body.has-article-toc .markdown-section {
@@ -164,12 +438,16 @@ body.has-article-toc .markdown-section {
   margin-right: auto;
 }
 
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
 @media (max-width: 768px) {
   .sidebar {
     flex-wrap: wrap;
     gap: 8px 12px;
     height: auto;
-    min-height: 112px;
+    min-height: 104px;
     padding: 12px 16px;
   }
 
@@ -188,7 +466,11 @@ body.has-article-toc .markdown-section {
   }
 
   .content {
-    padding-top: 112px;
+    padding-top: 104px;
+  }
+
+  .markdown-section {
+    padding: 32px 20px 48px;
   }
 
   .article-toc {
